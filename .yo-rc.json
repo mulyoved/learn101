@@ -1,0 +1,11 @@
+{
+  "generator-famous": {
+    "projectName": "learn101",
+    "projectDesc": "List of small examples while I learn new concepts",
+    "authorLogin": "mulyoved",
+    "author": {
+      "name": "mulyoved",
+      "email": "mulyoved@gmail.com"
+    }
+  }
+}
