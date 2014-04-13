@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="lib/requirejs/require.js" data-main="src/requireJsTest"></script>
+    <title></title>
+</head>
+<body>
+<button onclick="require('requireJs/subModule')()">Press To Play</button>
+<h3>-Using requierjs to load function from external module-</h3>
+<button id="btn1">Press To Func1</button>
+<button id="btn2">Press To Func2</button>
+<h3>-Sample to create Object-</h3>
+<button id="btn3">Base Class - Func 1 (With correct this) </button>
+<button id="btn4">Base Class - Func 2 (With wrong this) </button>
+<button id="btn4.1">Base Class - Func 2 (Using Bind) </button>
+<h3>-Sample to create inherited object-</h3>
+<button id="btn5">Inherited Class - Func 1</button>
+<button id="btn6">Inherited Class - Func 2</button>
+<button id="btn7">Inherited Class - Func 3</button>
+</body>
+</html>
