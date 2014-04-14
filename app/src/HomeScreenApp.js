@@ -4,11 +4,11 @@ require.config({
 
     },
     paths: {
-        app: '../Example_Interesting_app/',
+        app: '../HomeScreenApp/',
         famous: '../lib/famous',
         requirejs: '../lib/requirejs/require',
         almond: '../lib/almond/almond',
         'famous-polyfills': '../lib/famous-polyfills/index'
     }
 });
-require(['Example_Interesting_main']);
+require(['./app/main']);

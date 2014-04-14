@@ -62,7 +62,7 @@ define(function(require, exports, module) {
         
         this.sync.on('end', (function(data) {
             var velocity = data.velocity;
-            var position = this.pageViewPos.get();
+            //var position = this.pageViewPos.get();
 
             if(this.pageViewPos.get() > this.options.posThreshold) {
                 if(velocity < -this.options.velThreshold) {
