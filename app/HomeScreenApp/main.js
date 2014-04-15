@@ -4,18 +4,16 @@ define(function(require /*, exports, module*/) {
     var StateModifier   = require('famous/modifiers/StateModifier');
     require('famous/inputs/FastClick');
 
-    var IconMenuView    = require('app/IconMenuView');
+    var AppLuncherView = require('app/AppLuncherView');
 
     var mainContext = Engine.createContext();
 
-    var iconMenuView = new IconMenuView();
+    var appLuncherView = new AppLuncherView();
 
     var deviceBox = new Modifier({size: [320,544]});
     var devicePos = new Modifier({origin: [0.5,0.5]});
-    mainContext.add(devicePos).add(deviceBox).add(iconMenuView);
+    mainContext.add(devicePos).add(deviceBox).add(appLuncherView);
 
 
     //iconMenuView.reset();
-    iconMenuView.animate();
-
 });

@@ -77,7 +77,7 @@ define(function(require, exports, module) {
             
             {text: 'PERSON', imageUrl: 'img/ExampleThingsList/person-icon.png', available: true},
             {text: 'PLACE', imageUrl: 'img/ExampleThingsList/pointer-icon.png', available: true},
-            {text: 'PRODUCT', imageUrl: 'img/ExampleThingsList/product-icon.png', available: true},
+            {text: 'PRODUCT', imageUrl: 'img/product-icon.png', available: true},
         ];
 
         this.rowModifiers = [];

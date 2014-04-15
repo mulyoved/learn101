@@ -31,5 +31,11 @@ define(function(require, exports, module) {
         console.log(this.msgPrefix + "InheritedObject - Func3 "+this.msgPostfix);
     };
 
+    InheritedObject.prototype.func4 = function() {
+        console.log(this.msgPrefix + "InheritedObject - Func3 "+this.msgPostfix);
+
+        func_base_4();
+    };
+
     module.exports = InheritedObject;
 });

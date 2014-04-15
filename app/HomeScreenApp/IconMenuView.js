@@ -10,10 +10,15 @@ define(function(require, exports, module) {
     function IconMenuView() {
         View.apply(this, arguments);
 
-        _createBackground.call(this);
+        //_createBackground.call(this);
         _createStrips.call(this);
-        //_createGridLayout.call(this);
-        //_createSurface.call(this);
+
+        /*
+        this._eventOutput.on('app', function(event) {
+            console.log('App event');
+            this.startApp(event.id)
+        })
+        */
     }
 
     IconMenuView.DEFAULT_OPTIONS = {
@@ -36,49 +41,8 @@ define(function(require, exports, module) {
         this._add(this.filterSurf);
     }
 
-    /*
-    function _createSurface() {
-        this.surf = new Surface({
-            content: "Hello",
-            properties: {
-                backgroundColor: 'orange'
-            }
-        });
-
-        this._add(this.surf);
-    }
-
-    function _createGridLayout() {
-        //create a grid for icons
-        var grid = new GridLayout({
-            //size:[undefined, undefined],
-            dimensions: [3, 3],
-            properties: {
-                backgroundColor: 'orange'
-            }
-        });
-
-        var surfaces = [];
-        grid.sequenceFrom(surfaces);
-
-        for(var i = 0; i < 9; i++) {
-            surfaces.push(new Surface({
-                content: "I am panel " + (i + 1),
-                size: [undefined, undefined],
-                properties: {
-                    backgroundColor: "hsl(" + (i * 360 / 8) + ", 100%, 50%)",
-                    color: "black",
-                    lineHeight: window.innerHeight / 2 + 'px',
-                    textAlign: 'center'
-                }
-            }));
-        }
-
-        this._add(grid);
-    }
-    */
-
     function _createStrips() {
+        var _super = this;
         //create a grid for icons
         var grid = new GridLayout({
             //size:[undefined, undefined],
@@ -132,6 +96,23 @@ define(function(require, exports, module) {
                         '<div class="filterIconText '+ availability +'">' + iconContents[contentCounter].text +'</div>'
                 });
 
+                //var id = contentCounter;
+
+                //Example of closure, notice id must be in the params so it will not hook to some variable
+                //http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
+                (function setEvent(id) {
+                    surf.on('click', function () {
+                        console.log("Icon  Id:" + id);
+
+                        //Need to fire custome even here with id as a parmeter
+                        //IconClick id
+
+                        // Document closure in the right page
+
+                        _super._eventOutput.emit('app', {id: id});
+                    });
+                })(contentCounter);
+
                 //push view (modifier + surface) onto surfaces
                 view = new View();
                 view._add(this.rowModifiers[(row * 3) + col]).add(surf);
@@ -141,18 +122,12 @@ define(function(require, exports, module) {
             }
         }
 
-        /*
-        var gridMod = new Modifier({
-            size: [width, 360*height/568],
-            origin: [0.5, 0.5],
-            transform: Transform.translate(0, 30, 0)
-        });
-        */
-        //this._add(gridMod).add(grid);
         this._add(grid);
     }
 
     IconMenuView.prototype.animate = function() {
+        console.log("Satrt animate menu");
+
         this.reset();
 
         /*
@@ -180,8 +155,6 @@ define(function(require, exports, module) {
     };
 
     IconMenuView.prototype.reset = function() {
-        //this.titleMod.setTransform(Transform.translate(0, 0, 0));
-
         var scale = Transform.scale(0.1, 0.1, 0);
         var translate = Transform.translate(0, 50, 0);
 

@@ -39,4 +39,15 @@ define(function(require, exports, module) {
     document.getElementById("btn5").onclick = inheritedObject.func1.bind(inheritedObject);
     document.getElementById("btn6").onclick = inheritedObject.func2.bind(inheritedObject);
     document.getElementById("btn7").onclick = inheritedObject.func3.bind(inheritedObject);
+    document.getElementById("btn8").onclick = inheritedObject.func4.bind(inheritedObject);
+
+    for (var i=0; i<2; i++) {
+        console.log('Loop: '+i);
+
+        document.getElementById("btn_wrong_closure"+(i+1)).onclick = function() { console.log('Wrong: ' + (i+1)); };
+
+        (function (id) {
+            document.getElementById("btn_right_closure"+(i+1)).onclick = function() { console.log('Wrong: ' + (id+1)); };
+        })(i);
+    }
 });
