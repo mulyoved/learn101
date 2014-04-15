@@ -20,6 +20,10 @@ define(function(require, exports, module) {
         outTransition: { duration: 150, curve: Easing.easeOut }
     };
 
+    //Todo: better looking generic page
+    //Todo: Header, Back Button, Close Button
+    //Todo: Sample Apps
+
     function AppLuncherView() {
         View.apply(this, arguments);
         this._apps = {};
