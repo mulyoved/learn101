@@ -26,6 +26,7 @@ define(function(require, exports, module) {
     //Todo: Sample Apps
     //Ionic like header
     //Ionic like footer
+    
 
     function AppLuncherView() {
         View.apply(this, arguments);
