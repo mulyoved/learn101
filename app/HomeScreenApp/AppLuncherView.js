@@ -10,6 +10,7 @@ define(function(require, exports, module) {
     var Lightbox      = require('famous/views/Lightbox');
     var IconMenuView    = require('app/IconMenuView');
     var GenericContentPage  = require('app/GenericContentPage');
+    var FlipperSasmple  = require('app/FlipperSample');
 
     var lightboxOptions = {
         inOpacity: 1,
@@ -23,12 +24,46 @@ define(function(require, exports, module) {
     //Todo: better looking generic page
     //Todo: Header, Back Button, Close Button
     //Todo: Sample Apps
+    //Ionic like header
+    //Ionic like footer
 
     function AppLuncherView() {
         View.apply(this, arguments);
-        this._apps = {};
+        this._apps = {
+            '0': new FlipperSasmple(),
+        };
+
+        this.layout = new HeaderFooterLayout({
+            headerSize: 50,
+            footerSize: 50
+        });
+
+        this.header = new Surface({
+            size: [undefined, undefined],
+            content: "Header",
+            classes: ["red-bg"],
+            properties: {
+                lineHeight: "50px",
+                textAlign: "center"
+            }
+        });
+
+        this.layout.header.add(this.header);
+
+        this.layout.footer.add(new Surface({
+            size: [undefined, 50],
+            content: "Footer",
+            classes: ["red-bg"],
+            properties: {
+                lineHeight: "50px",
+                textAlign: "center"
+            }
+        }));
+
+        this._add(this.layout);
+
         this.lightbox = new Lightbox(lightboxOptions);
-        this._add(this.lightbox);
+        this.layout.content.add(this.lightbox);
 
         this.iconMenuView = new IconMenuView();
         this.iconMenuView.pipe(this._eventInput);
@@ -41,6 +76,11 @@ define(function(require, exports, module) {
         this._eventInput.on('close', function () {
             this.showMenu();
         }.bind(this));
+
+        this.header.on("click", function() {
+            this.showMenu();
+        }.bind(this));
+
     }
 
     AppLuncherView.DEFAULT_OPTIONS = {

@@ -24,6 +24,6 @@ define(function(require, exports, module) {
         console.log(this.msgPrefix + "BaseObject - Func4" + this.msgPostfix);
     };
     */
-    
+
     module.exports = BaseObject;
 });
